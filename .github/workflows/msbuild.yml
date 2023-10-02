@@ -28,15 +28,10 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v3
 
-    - name: Setup MSBuild.exe
-      uses: warrenbuckley/Setup-MSBuild@v1
-            
-
-    - name: Restore NuGet packages
-      working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: nuget restore ${{env.SOLUTION_FILE_PATH}}
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
